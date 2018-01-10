@@ -158,70 +158,71 @@ namespace DWM.Models.Persistence
         }
 
         #region Métodos da classe ListViewRepository
-        //public override IEnumerable<EmailLogViewModel> Bind(int? index, int pageSize = 50, params object[] param)
-        //{
-        //    DateTime data1 = param.Count() > 0 && param[0] != null ? (DateTime)param[0] : new DateTime(1980, 1, 1);
-        //    DateTime data2 = param.Count() > 1 && param[1] != null ? (DateTime)param[1] : Funcoes.Brasilia().Date.AddDays(30);
-        //    string EdificacaoID = "";
-        //    string GrupoCondominoID = "";
-        //    string IsHome = "N";
+        public override IEnumerable<EmailLogViewModel> Bind(int? index, int pageSize = 50, params object[] param)
+        {
+            //    DateTime data1 = param.Count() > 0 && param[0] != null ? (DateTime)param[0] : new DateTime(1980, 1, 1);
+            //    DateTime data2 = param.Count() > 1 && param[1] != null ? (DateTime)param[1] : Funcoes.Brasilia().Date.AddDays(30);
+            //    string EdificacaoID = "";
+            //    string GrupoCondominoID = "";
+            //    string IsHome = "N";
 
-        //    if (param.Count() > 2)
-        //    {
-        //        IsHome = "S";
-        //        if (param[2] != null)
-        //        {
-        //            int[] GrupoCondomino = (int[])param[2];
-        //            for (int i = 0; i <= GrupoCondomino.Count() - 1; i++)
-        //            {
-        //                GrupoCondominoID += GrupoCondominoID[i].ToString() + ";";
-        //            }
-        //        }
-        //    }
+            //    if (param.Count() > 2)
+            //    {
+            //        IsHome = "S";
+            //        if (param[2] != null)
+            //        {
+            //            int[] GrupoCondomino = (int[])param[2];
+            //            for (int i = 0; i <= GrupoCondomino.Count() - 1; i++)
+            //            {
+            //                GrupoCondominoID += GrupoCondominoID[i].ToString() + ";";
+            //            }
+            //        }
+            //    }
 
-        //    IEnumerable<EmailLogViewModel> foldase = (from info in db.EmailLogs
-        //            join gru in db.GrupoCondominos on info.GrupoCondominoID equals gru.GrupoCondominoID into GRU
-        //            from gru in GRU.DefaultIfEmpty()
-        //            join edi in db.Edificacaos on info.EdificacaoID equals edi.EdificacaoID into EDI
-        //            from edi in EDI.DefaultIfEmpty()
-        //            join eti in db.EmailTipos on info.EmailTipoID equals eti.EmailTipoID
-        //            where info.DataEmail >= data1 && info.DataEmail <= data2
-        //                    && info.CondominioID == SessaoLocal.empresaId
-        //                    && (IsHome == "N" || info.DataEmail >= SqlFunctions.GetDate())
-        //                    && (GrupoCondominoID == "" || GrupoCondominoID.Contains(info.GrupoCondominoID.ToString()))
-        //                    && (EdificacaoID == "" || EdificacaoID.Contains(info.EdificacaoID.ToString()))
-        //                    && (eti.CondominioID == SessaoLocal.empresaId)
-        //            orderby info.DataEmail descending
-        //            select new EmailLogViewModel
-        //            {
-        //                empresaId = sessaoCorrente.empresaId,
-        //                EmailLogID = info.EmailLogID,
-        //                CondominioID = info.CondominioID,
-        //                EdificacaoID = info.EdificacaoID,
-        //                Descricao_Edificacao = edi.Descricao,
-        //                GrupoCondominoID = gru.GrupoCondominoID,
-        //                Descricao_GrupoCondomino = gru.Descricao,
-        //                DataEmail = info.DataEmail,
-        //                Assunto = info.Assunto,
-        //                EmailMensagem = info.EmailMensagem,
-        //                EmailTipoID = info.EmailTipoID,
-        //                UnidadeID = info.UnidadeID,
-        //                sessionId = sessaoCorrente.sessaoId,
-        //                Descricao_EmailTipo = eti.Descricao,
-        //            }).ToList();
+            //    IEnumerable<EmailLogViewModel> foldase = (from info in db.EmailLogs
+            //            join gru in db.GrupoCondominos on info.GrupoCondominoID equals gru.GrupoCondominoID into GRU
+            //            from gru in GRU.DefaultIfEmpty()
+            //            join edi in db.Edificacaos on info.EdificacaoID equals edi.EdificacaoID into EDI
+            //            from edi in EDI.DefaultIfEmpty()
+            //            join eti in db.EmailTipos on info.EmailTipoID equals eti.EmailTipoID
+            //            where info.DataEmail >= data1 && info.DataEmail <= data2
+            //                    && info.CondominioID == SessaoLocal.empresaId
+            //                    && (IsHome == "N" || info.DataEmail >= SqlFunctions.GetDate())
+            //                    && (GrupoCondominoID == "" || GrupoCondominoID.Contains(info.GrupoCondominoID.ToString()))
+            //                    && (EdificacaoID == "" || EdificacaoID.Contains(info.EdificacaoID.ToString()))
+            //                    && (eti.CondominioID == SessaoLocal.empresaId)
+            //            orderby info.DataEmail descending
+            //            select new EmailLogViewModel
+            //            {
+            //                empresaId = sessaoCorrente.empresaId,
+            //                EmailLogID = info.EmailLogID,
+            //                CondominioID = info.CondominioID,
+            //                EdificacaoID = info.EdificacaoID,
+            //                Descricao_Edificacao = edi.Descricao,
+            //                GrupoCondominoID = gru.GrupoCondominoID,
+            //                Descricao_GrupoCondomino = gru.Descricao,
+            //                DataEmail = info.DataEmail,
+            //                Assunto = info.Assunto,
+            //                EmailMensagem = info.EmailMensagem,
+            //                EmailTipoID = info.EmailTipoID,
+            //                UnidadeID = info.UnidadeID,
+            //                sessionId = sessaoCorrente.sessaoId,
+            //                Descricao_EmailTipo = eti.Descricao,
+            //            }).ToList();
 
-        //    int contador = 0;
-        //    foreach (EmailLogViewModel log in foldase)
-        //    {
-        //        if (log.UnidadeID.HasValue)
-        //        {
-        //            foldase.ElementAt(contador).Codigo = db.Unidades.Find(log.CondominioID, log.EdificacaoID, log.UnidadeID).Codigo;
-        //        }
-        //        contador++;
-        //    }
+            //    int contador = 0;
+            //    foreach (EmailLogViewModel log in foldase)
+            //    {
+            //        if (log.UnidadeID.HasValue)
+            //        {
+            //            foldase.ElementAt(contador).Codigo = db.Unidades.Find(log.CondominioID, log.EdificacaoID, log.UnidadeID).Codigo;
+            //        }
+            //        contador++;
+            //    }
 
-        //    return foldase;
-        //}
+            //    return foldase;
+            throw new NotImplementedException();
+        }
 
         public override string action()
         {
@@ -233,10 +234,11 @@ namespace DWM.Models.Persistence
             return "div-Informativo";
         }
 
-        //public override Repository getRepository(Object id)
-        //{
-        //    return new InformativoModel().getObject((InformativoViewModel)id);
-        //}
+        public override Repository getRepository(Object id)
+        {
+            //return new InformativoModel().getObject((InformativoViewModel)id);
+            throw new NotImplementedException();
+        }
         #endregion
     }
 

@@ -2,6 +2,6 @@
 {
     public enum Sistema
     {
-        DWMMASTER = 9
+        DWMSSCOB = 9
     }
 }

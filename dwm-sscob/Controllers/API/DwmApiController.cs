@@ -19,7 +19,7 @@ namespace DWM.Controllers.API
 
     public class DwmApiController : ApiController
     {
-        protected int _sistema_id() { return (int)DWM.Models.Enumeracoes.Sistema.DWMCONDOMINIOS; }
+        protected int _sistema_id() { return (int)DWM.Models.Enumeracoes.Sistema.DWMSSCOB; }
 
         protected string PageSize = "10";
 

@@ -1,14 +1,6 @@
 ﻿{
   "compilerOptions": {
-    "noImplicitAny": false,
-    "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "target": "es5"
-  },
-  "exclude": [
-    "node_modules",
-    "www",
-    "bower_components"
-  ]
+    "allowJs": true, // include .js and .jsx in project context (defaults to only .ts and .tsx)
+    "noEmit": true // turns off downlevel compiler
+  }
 }
