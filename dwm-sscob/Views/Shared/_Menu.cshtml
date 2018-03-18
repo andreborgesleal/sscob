@@ -5,23 +5,25 @@
     EmpresaSecurity<App_DominioContext> security = new EmpresaSecurity<App_DominioContext>();
     IEnumerable<TransacaoRepository> menuList = security.getUsuarioTransacao();
 }
+
 @if (menuList != null)
 {
-    <ul class="nav side-menu">
-        @foreach (TransacaoRepository t in menuList.Where(info => info.transacaoId_pai == null && info.referencia == "Barra de Menu"))
+    <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">NAVEGAÇÃO</li>
+        @foreach (TransacaoRepository t in menuList.Where(info => info.transacaoId_pai == null && info.referencia == "Barra de Menu" && info.exibir == "S"))
         {
-            <li>
-                <a><i class="fa @t.glyph"></i> @t.nomeCurto <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    @foreach (TransacaoRepository t1 in menuList.Where(info => info.transacaoId_pai == t.transacaoId && info.exibir == "S"))
-                    {
-                        <li>
-                            <a href="~/@t1.url">@t1.nomeCurto </a>
-                        </li>
-                    }
-                </ul>
-            </li>
+            if (@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == t.url.Split('/')[0])
+            {
+                <li class="active">
+                    <a href="~/@t.url"><i class="fa @t.glyph"></i> <span>@t.nomeCurto</span></a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="~/@t.url"><i class="fa @t.glyph"></i> <span>@t.nomeCurto</span></a>
+                </li>
+            }
         }
     </ul>
 }
-

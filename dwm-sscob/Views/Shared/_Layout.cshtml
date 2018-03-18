@@ -245,16 +245,7 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
                 <!-- sidebar menu: : style can be found in sidebar.less -->
-                <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">NAVEGAÇÃO</li>
-                    <li><a href="#"><i class="fa fa-home"></i> <span>Início</span></a></li>
-                    <li class="active treeview menu-open">
-                        <a href="#">
-                            <i class="fa fa-building"></i> <span>Estabelecimentos</span>
-                        </a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-user-md"></i> <span>Enfermeiros</span></a></li>
-                </ul>
+                @Html.Partial("_Menu")
             </section>
             <!-- /.sidebar -->
         </aside>
