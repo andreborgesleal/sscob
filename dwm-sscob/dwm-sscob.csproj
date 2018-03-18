@@ -7440,6 +7440,7 @@
     <Content Include="Views\Estabelecimentos\Create.cshtml" />
     <Content Include="Views\Estabelecimentos\Edit.cshtml" />
     <Content Include="Views\Estabelecimentos\Delete.cshtml" />
+    <Content Include="Views\Shared\_LayoutAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Temp\" />

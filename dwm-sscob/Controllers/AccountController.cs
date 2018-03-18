@@ -71,7 +71,7 @@ namespace dwm_sscob.Controllers
 
                     string sessaoId = result.Field;
 
-                    return RedirectToAction("Browse", "Estabelecimentos");
+                    return RedirectToAction("Index", "Home");
                 }
                 catch (ArgumentException ex)
                 {
