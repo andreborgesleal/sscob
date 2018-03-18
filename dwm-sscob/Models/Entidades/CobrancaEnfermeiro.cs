@@ -12,13 +12,20 @@ namespace DWM.Models.Entidades
     {
         [Key, Column(Order = 0)]
         [DisplayName("CobrancaID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CobrancaID { get; set; }
 
         [Key, Column(Order = 1)]
         [DisplayName("EnfermeiroID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int EnfermeiroID { get; set; }
 
         [DisplayName("Valor")]
+        [Column(TypeName = "numeric")]
         public decimal Valor { get; set; }
+
+        public virtual Cobranca Cobranca { get; set; }
+
+        public virtual Enfermeiro Enfermeiro { get; set; }
     }
 }

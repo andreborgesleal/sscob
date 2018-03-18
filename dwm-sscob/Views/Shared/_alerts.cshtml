@@ -2,21 +2,26 @@
 @{
     Layout = null;
 }
-@if (TempData.ContainsKey(Alerts.ATTENTION))
+
+@if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
 {
     <div class="alert alert-dismissable alert-warning">
-        <a class="close" data-dismiss="alert" href="#" aria-hidden="true">x</a>
-        <h4 class="alert-heading text-mama-africa">Atenção!</h4>
-        <span class="text-mama-africa">@TempData[Alerts.ATTENTION]</span>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-ban"></i> Atenção!</h4>
+        <span class="text-mama-africa">@Html.ValidationSummary()</span>
     </div>
 }
-@foreach (string key in Alerts.ALL.Except(new[] { Alerts.ATTENTION }))
+else
 {
-    if (TempData.ContainsKey(key))
+    foreach (string key in Alerts.ALL.Except(new[] { Alerts.ATTENTION }))
     {
-        <div class="alert alert-dismissable alert-@key">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-            @TempData[key]
-        </div>
+        if (TempData.ContainsKey(key))
+        {
+            <div class="alert alert-dismissable alert-@key">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                @TempData[key]
+            </div>
+        }
     }
 }
+

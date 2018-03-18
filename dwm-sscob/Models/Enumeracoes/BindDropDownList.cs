@@ -168,5 +168,26 @@ namespace DWM.Models.Enumeracoes
                 return q;
             }
         }
+
+        public IEnumerable<SelectListItem> TipoEstabelecimento(params object[] param)
+        {
+             //params[0] -> cabeçalho("Selecione...", "Todos...");
+            // params[1] -> SelectedValue
+
+            string cabecalho = param[0].ToString();
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                IList<SelectListItem> q = new List<SelectListItem>();
+
+                if (cabecalho != "")
+                    q.Add(new SelectListItem() { Value = "", Text = cabecalho });
+
+                q.Add(new SelectListItem() { Value = "1", Text = "Público" });
+                q.Add(new SelectListItem() { Value = "2", Text = "Privado" });
+
+                return q;
+            }
+        }
     }
 }

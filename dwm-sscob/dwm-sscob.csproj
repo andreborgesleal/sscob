@@ -213,6 +213,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\DwmApiController.cs" />
     <Compile Include="Controllers\API\SegurancaAPIController.cs" />
+    <Compile Include="Controllers\EstabelecimentosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,6 +223,7 @@
     <Compile Include="Models\API\Auth.cs" />
     <Compile Include="Models\API\UsuarioLogadoToken.cs" />
     <Compile Include="Models\BI\HomeBI.cs" />
+    <Compile Include="Models\BI\RegisterBI.cs" />
     <Compile Include="Models\Contratos\ICrudModelLocal.cs" />
     <Compile Include="Models\Entidades\ApplicationContext.cs" />
     <Compile Include="Models\Entidades\Cobranca.cs" />
@@ -249,15 +251,26 @@
     <Compile Include="Models\Pattern\FacadeLocalhost.cs" />
     <Compile Include="Models\Pattern\FactoryLocalhost.cs" />
     <Compile Include="Models\Persistence\EmailLogModel.cs" />
+    <Compile Include="Models\Persistence\EstabelecimentoModel.cs" />
+    <Compile Include="Models\Repositories\CobrancaEnfermeiroViewModel.cs" />
+    <Compile Include="Models\Repositories\CobrancaViewModel.cs" />
     <Compile Include="Models\Repositories\EmailLogViewModel.cs" />
     <Compile Include="Models\Repositories\EmailTemplateViewModel.cs" />
     <Compile Include="Models\Repositories\EmailTipoViewModel.cs" />
+    <Compile Include="Models\Repositories\EnfermeiroSituacaoViewModel.cs" />
+    <Compile Include="Models\Repositories\EnfermeiroViewModel.cs" />
+    <Compile Include="Models\Repositories\EstabelecimentoViewModel.cs" />
     <Compile Include="Models\Repositories\HomeViewModel.cs" />
     <Compile Include="Models\Repositories\ParametroViewModel.cs" />
+    <Compile Include="Models\Repositories\SituacaoViewModel.cs" />
+    <Compile Include="Models\Repositories\TaxaSindicalViewModel.cs" />
+    <Compile Include="Models\Repositories\UsuarioViewModel.cs" />
+    <Compile Include="Models\Utils\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MensagemPadrao.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
@@ -7350,10 +7363,18 @@
     <Content Include="Content\dist\css\adminlte.min.css.map" />
     <Content Include="Content\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Content\plugins\input-mask\phone-codes\phone-codes.json" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\inputs-jquery-ui.js" />
+    <Content Include="Scripts\jquery-3.0.0.js" />
+    <Content Include="Scripts\jquery-3.0.0.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.0.0.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.maskedinput.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -7414,9 +7435,13 @@
     <Content Include="Views\Shared\_defaultListButtons.cshtml" />
     <Content Include="Views\Shared\_Filter.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Estabelecimentos\ListParam.cshtml" />
+    <Content Include="Views\Estabelecimentos\Browse.cshtml" />
+    <Content Include="Views\Estabelecimentos\Create.cshtml" />
+    <Content Include="Views\Estabelecimentos\Edit.cshtml" />
+    <Content Include="Views\Estabelecimentos\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Temp\" />
     <Folder Include="Users_Data\" />
   </ItemGroup>
@@ -7431,7 +7456,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\bower_components\moment\moment.d.ts" />

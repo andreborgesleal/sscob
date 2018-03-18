@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dwm-sscob", "dwm-sscob\dwm-sscob.csproj", "{53C1751F-289E-462D-8680-B8A766A3E13D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App_Dominio", "..\app_dominio\App_Dominio\App_Dominio\App_Dominio.csproj", "{3FFAF7B0-E293-489C-80DE-0C0AC24CF8E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{53C1751F-289E-462D-8680-B8A766A3E13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53C1751F-289E-462D-8680-B8A766A3E13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53C1751F-289E-462D-8680-B8A766A3E13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FFAF7B0-E293-489C-80DE-0C0AC24CF8E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FFAF7B0-E293-489C-80DE-0C0AC24CF8E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FFAF7B0-E293-489C-80DE-0C0AC24CF8E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FFAF7B0-E293-489C-80DE-0C0AC24CF8E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

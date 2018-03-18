@@ -1,0 +1,92 @@
+﻿@model DWM.Models.Repositories.EstabelecimentoViewModel
+
+@section title
+{
+    <h1>
+        Incluir Estabelecimento
+    </h1>
+}
+
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-home"></i> Início</a></li>
+        <li><a href="/Estabelecimentos/Browse"><i class="fa fa-building"></i> Listagem de Estabelecimentos</a></li>
+        <li class="active"><i class="fa fa-plus"></i> Incluir Estabelecimento</li>
+    </ol>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("_alerts")
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Estabelecimento</h3>
+            </div>
+
+            @* FORM *@
+            @using (Html.BeginForm("Create", "Estabelecimentos", FormMethod.Post, new { id = "formEstabelecimentos", @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CNPJ, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(m => m.CNPJ, new { @class = "form-control", @requried = "required"  })
+                            @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: uppercase;" } })
+                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TipoEstabelecimento, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-2">
+                            @*@Html.EditorFor(model => model.TipoEstabelecimento, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownList("TipoEstabelecimento", new DWM.Models.Enumeracoes.BindDropDownList().TipoEstabelecimento("Selecione..."), new { @class = "form-control", @id = "TipoEstabelecimento" })
+                            @Html.ValidationMessageFor(model => model.TipoEstabelecimento, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SetorRecolhimento, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.SetorRecolhimento, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SetorRecolhimento, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <input type="submit" value="Salvar" class="btn btn-flat btn-primary" />
+                    @Html.ActionLink("Voltar", "Browse", "Estabelecimentos", new { @class = "btn btn-flat btn-default" })
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        $("#CNPJ").mask("99.999.999/9999-99");
+    });
+</script>
+}
