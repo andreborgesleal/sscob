@@ -130,6 +130,12 @@ namespace DWM.Models.Persistence
 
             return value.mensagem;
         }
+
+        public override EstabelecimentoViewModel AfterInsert(EstabelecimentoViewModel value)
+        {
+            var result = seguranca_db.Database.SqlQuery<Object>($"exec dbo.IncluirUsuarioEstabelecimento @P_CNPJ = '{value.CNPJ}', @P_NOME='{value.Nome}', @P_EMAIL = '{value.Email}'").ToList();
+            return base.AfterInsert(value);
+        }
         #endregion
     }
 
