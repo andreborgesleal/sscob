@@ -8,6 +8,6 @@ namespace DWM.Models.Entidades
 {
     public class SessaoLocal : Sessao
     {
-        
+
     }
 }

@@ -8,6 +8,7 @@ using System.Web;
 
 namespace DWM.Models.Entidades
 {
+    [Table("CobrancaEnfermeiro")]
     public class CobrancaEnfermeiro
     {
         [Key, Column(Order = 0)]

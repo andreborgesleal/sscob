@@ -13,17 +13,15 @@ namespace DWM.Models.Repositories
         [DisplayName("EnfermeiroID")]
         public int EnfermeiroID { get; set; }
 
-        [DisplayName("CNPJ")]
+        [DisplayName("Estabelecimento *")]
         [Required]
-        [StringLength(14)]
         public string CNPJ { get; set; }
 
-        [DisplayName("CPF")]
+        [DisplayName("CPF *")]
         [Required]
-        [StringLength(11)]
         public string CPF { get; set; }
 
-        [DisplayName("Nome")]
+        [DisplayName("Nome *")]
         [Required]
         [StringLength(40)]
         public string Nome { get; set; }
@@ -32,9 +30,45 @@ namespace DWM.Models.Repositories
         [StringLength(25)]
         public string PIS { get; set; }
 
-        [DisplayName("IndSituacao")]
-        [Required]
-        [StringLength(1)]
+        [DisplayName("Situação *")]
         public string IndSituacao { get; set; }
+
+        [DisplayName("Observação")]
+        [DataType(DataType.MultilineText)]
+        public string Observacao { get; set; }
+
+        public EstabelecimentoViewModel EstabelecimentoViewModel { get; set; }
+
+        public string CNPJComFormatacao
+        {
+            get
+            {
+                return Utils.Utils.FormatCNPJ(this.CNPJ);
+            }
+        }
+
+        public string CNPJSemFormatacao
+        {
+            get
+            {
+                return Utils.Utils.SemFormatacao(this.CNPJ);
+            }
+        }
+
+        public string CPFComFormatacao
+        {
+            get
+            {
+                return Utils.Utils.FormatCPF(this.CPF);
+            }
+        }
+        
+        public string CPFSemFormatacao
+        {
+            get
+            {
+                return Utils.Utils.SemFormatacao(this.CPF);
+            }
+        }
     }
 }

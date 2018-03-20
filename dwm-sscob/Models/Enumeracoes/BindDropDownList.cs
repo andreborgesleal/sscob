@@ -11,6 +11,15 @@ namespace DWM.Models.Enumeracoes
 {
     public class BindDropDownList
     {
+        private bool IsAdmin()
+        {
+            EmpresaSecurity<SecurityContext> security = new EmpresaSecurity<SecurityContext>();
+            if (security.getGruposByCurrentUser().Contains("Administração"))
+                return true;
+            else
+                return false;
+        }
+
         public IEnumerable<SelectListItem> EmailTipos(params object[] param)
         {
             // params[0] -> cabeçalho (Selecione..., Todos...)
@@ -163,7 +172,7 @@ namespace DWM.Models.Enumeracoes
                     q.Add(new SelectListItem() { Value = "", Text = cabecalho });
 
                 q.Add(new SelectListItem() { Value = "A", Text = "Ativo" });
-                q.Add(new SelectListItem() { Value = "D", Text = "Desativado" });
+                q.Add(new SelectListItem() { Value = "I", Text = "Inativo" });
 
                 return q;
             }
@@ -185,6 +194,45 @@ namespace DWM.Models.Enumeracoes
 
                 q.Add(new SelectListItem() { Value = "1", Text = "Público" });
                 q.Add(new SelectListItem() { Value = "2", Text = "Privado" });
+
+                return q;
+            }
+        }
+
+        public IEnumerable<SelectListItem> Estabelecimentos(params object[] param)
+        {
+            var email = DWMSessaoLocal.GetSessaoLocal().login;
+            string cabecalho = param[0].ToString();
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                IList<SelectListItem> q = new List<SelectListItem>();
+
+                if (IsAdmin())
+                {
+                    if (cabecalho != "")
+                        q.Add(new SelectListItem() { Value = "", Text = cabecalho });
+
+                    q = q.Union(from est in db.Estabelecimento.AsEnumerable()
+                                orderby est.Nome
+                                select new SelectListItem()
+                                {
+                                    Value = est.CNPJ,
+                                    Text = est.Nome
+                                }).ToList();
+                }
+                else
+                {
+                    q = q.Union(from est in db.Estabelecimento.AsEnumerable()
+                                where est.Email == email
+                                orderby est.Nome
+                                select new SelectListItem()
+                                {
+                                    Value = est.CNPJ,
+                                    Text = est.Nome
+                                }).ToList();
+                }
+               
 
                 return q;
             }

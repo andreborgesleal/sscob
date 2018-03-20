@@ -1,0 +1,111 @@
+﻿@model DWM.Models.Repositories.EnfermeiroViewModel
+
+@section title
+{
+    <h1>
+        Excluir Enfermeiro
+    </h1>
+}
+
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-home"></i> Início</a></li>
+        <li><a href="/Enfermeiros/Browse"><i class="fa fa-user-md"></i> Listagem de Enfermeiros</a></li>
+        <li class="active"><i class="fa fa-remove"></i> Excluir Enfermeiro</li>
+    </ol>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("_alerts")
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Enfermeiro</h3>
+            </div>
+
+            @* FORM *@
+            @using (Html.BeginForm("Delete", "Enfermeiros", FormMethod.Post, new { id = "formEnfermeiros", @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(x => x.EnfermeiroID)
+                @Html.HiddenFor(x => x.CPF)
+                @Html.HiddenFor(x => x.CNPJ)
+                @Html.HiddenFor(x => x.empresaId)
+                @Html.HiddenFor(x => x.Nome)
+                @Html.HiddenFor(x => x.IndSituacao)
+                @Html.HiddenFor(info => info.sessionId)
+
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "form-control", @required = "required", readOnly = "true" } })
+                            @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: uppercase;", readOnly = "true" } })
+                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PIS, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.PIS, new { htmlAttributes = new { @class = "form-control", readOnly = "true" } })
+                            @Html.ValidationMessageFor(model => model.PIS, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IndSituacao, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-2">
+                            @*@Html.EditorFor(model => model.TipoEstabelecimento, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownList("IndSituacao", new DWM.Models.Enumeracoes.BindDropDownList().Situacao(""), new { @class = "form-control", @id = "IndSituacao", @disabled = "disable" })
+                            @Html.ValidationMessageFor(model => model.IndSituacao, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.Observacao, new { htmlAttributes = new { @class = "form-control", readOnly = "true" } })
+                            @Html.ValidationMessageFor(model => model.Observacao, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CNPJ, htmlAttributes: new { @class = "control-label col-md-3 col-sm-12" })
+                        <div class="col-md-4">
+                            @*@Html.EditorFor(model => model.TipoEstabelecimento, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownList("CNPJ", new DWM.Models.Enumeracoes.BindDropDownList().Estabelecimentos("Selecione..."), new { @class = "form-control", @id = "Estabelecimentos", @disabled = "disable" })
+                            @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="box-footer">
+                    <input type="submit" value="Excluir" class="btn btn-flat btn-danger" />
+                    @Html.ActionLink("Voltar", "Browse", "Enfermeiros", new { @class = "btn btn-flat btn-default" })
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#CPF").mask("999.999.999-99");
+        });
+    </script>
+}
+
+

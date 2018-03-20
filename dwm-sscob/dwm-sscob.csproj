@@ -213,6 +213,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\DwmApiController.cs" />
     <Compile Include="Controllers\API\SegurancaAPIController.cs" />
+    <Compile Include="Controllers\EnfermeirosController.cs" />
     <Compile Include="Controllers\EstabelecimentosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -235,12 +236,10 @@
     <Compile Include="Models\Entidades\EmailTemplate.cs" />
     <Compile Include="Models\Entidades\EmailTipo.cs" />
     <Compile Include="Models\Entidades\Enfermeiro.cs" />
-    <Compile Include="Models\Entidades\EnfermeiroSituacao.cs" />
     <Compile Include="Models\Entidades\Estabelecimento.cs" />
     <Compile Include="Models\Entidades\ListViewModelLocal.cs" />
     <Compile Include="Models\Entidades\Parametro.cs" />
     <Compile Include="Models\Entidades\SessaoLocal.cs" />
-    <Compile Include="Models\Entidades\Situacao.cs" />
     <Compile Include="Models\Entidades\TaxaSindical.cs" />
     <Compile Include="Models\Enumeracoes\BindDropDownList.cs" />
     <Compile Include="Models\Enumeracoes\DwmMasterEnum.cs" />
@@ -251,18 +250,17 @@
     <Compile Include="Models\Pattern\FacadeLocalhost.cs" />
     <Compile Include="Models\Pattern\FactoryLocalhost.cs" />
     <Compile Include="Models\Persistence\EmailLogModel.cs" />
+    <Compile Include="Models\Persistence\EnfermeiroModel.cs" />
     <Compile Include="Models\Persistence\EstabelecimentoModel.cs" />
     <Compile Include="Models\Repositories\CobrancaEnfermeiroViewModel.cs" />
     <Compile Include="Models\Repositories\CobrancaViewModel.cs" />
     <Compile Include="Models\Repositories\EmailLogViewModel.cs" />
     <Compile Include="Models\Repositories\EmailTemplateViewModel.cs" />
     <Compile Include="Models\Repositories\EmailTipoViewModel.cs" />
-    <Compile Include="Models\Repositories\EnfermeiroSituacaoViewModel.cs" />
     <Compile Include="Models\Repositories\EnfermeiroViewModel.cs" />
     <Compile Include="Models\Repositories\EstabelecimentoViewModel.cs" />
     <Compile Include="Models\Repositories\HomeViewModel.cs" />
     <Compile Include="Models\Repositories\ParametroViewModel.cs" />
-    <Compile Include="Models\Repositories\SituacaoViewModel.cs" />
     <Compile Include="Models\Repositories\TaxaSindicalViewModel.cs" />
     <Compile Include="Models\Repositories\UsuarioViewModel.cs" />
     <Compile Include="Models\Utils\Utils.cs" />
@@ -7441,6 +7439,11 @@
     <Content Include="Views\Estabelecimentos\Edit.cshtml" />
     <Content Include="Views\Estabelecimentos\Delete.cshtml" />
     <Content Include="Views\Shared\_LayoutAccount.cshtml" />
+    <Content Include="Views\Enfermeiros\Browse.cshtml" />
+    <Content Include="Views\Enfermeiros\ListParam.cshtml" />
+    <Content Include="Views\Enfermeiros\Create.cshtml" />
+    <Content Include="Views\Enfermeiros\Edit.cshtml" />
+    <Content Include="Views\Enfermeiros\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Temp\" />

@@ -8,6 +8,7 @@ using System.Web;
 
 namespace DWM.Models.Entidades
 {
+    [Table("TaxaSindical")]
     public class TaxaSindical
     {
         public TaxaSindical()

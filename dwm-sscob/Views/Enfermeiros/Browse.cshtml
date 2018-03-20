@@ -1,0 +1,66 @@
+﻿@model PagedList<DWM.Models.Repositories.EnfermeiroViewModel>
+<!-- Datatables -->
+@*<link href="../Content/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">*@
+
+
+@section title
+{
+    <h1>
+        Listagem de Enfermeiros
+    </h1>
+}
+
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-home"></i> Início</a></li>
+        <li><a href="/Enfermeiros/Browse"><i class="fa fa-user-md"></i> Listagem de Enfermeiros</a></li>
+    </ol>
+}
+
+<div>
+    @Html.Partial("_alerts")
+    <div class="x_content">
+        @using (Ajax.BeginForm("ListParam", "Enfermeiro", new AjaxOptions { HttpMethod = "get", UpdateTargetId = "div-list" }, new { @role = "search", @id = "form000" }))
+        {
+            @Html.HiddenFor(info => info.FirstOrDefault().empresaId)
+        }
+
+        <div id="div-list">
+            @Html.Partial("ListParam", Model)
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+            $(document).ready(function () {
+                $('#example1').dataTable({
+                    "language": {
+                        "sEmptyTable": "Nenhum registro encontrado",
+                        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                        "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sInfoThousands": ".",
+                        "sLengthMenu": "_MENU_ resultados por página",
+                        "sLoadingRecords": "Carregando...",
+                        "sProcessing": "Processando...",
+                        "sZeroRecords": "Nenhum registro encontrado",
+                        "sSearch": "Pesquisar",
+                        "oPaginate": {
+                            "sNext": "Próximo",
+                            "sPrevious": "Anterior",
+                            "sFirst": "Primeiro",
+                            "sLast": "Último"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Ordenar colunas de forma ascendente",
+                            "sSortDescending": ": Ordenar colunas de forma descendente"
+                        }
+                    }
+                });
+            });
+    </script>
+}

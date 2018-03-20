@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace DWM.Models.Entidades
 {
+    [Table("Enfermeiro")]
     public class Enfermeiro
     {
         public Enfermeiro()
         {
             CobrancaEnfermeiro = new List<CobrancaEnfermeiro>();
-            EnfermeiroSituacao = new List<EnfermeiroSituacao>();
         }
 
         [Key]
@@ -34,10 +35,11 @@ namespace DWM.Models.Entidades
         [DisplayName("IndSituacao")]
         public string IndSituacao { get; set; }
 
+        [DisplayName("Observacao")]
+        public string Observacao { get; set; }
+
         public virtual ICollection<CobrancaEnfermeiro> CobrancaEnfermeiro { get; set; }
 
         public virtual Estabelecimento Estabelecimento { get; set; }
-
-        public virtual ICollection<EnfermeiroSituacao> EnfermeiroSituacao { get; set; }
     }
 }

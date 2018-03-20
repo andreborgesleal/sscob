@@ -12,9 +12,7 @@ namespace DWM.Models.Entidades
         public DbSet<Cobranca> Cobranca { get; set; }
         public DbSet<CobrancaEnfermeiro> CobrancaEnfermeiro { get; set; }
         public DbSet<Enfermeiro> Enfermeiro { get; set; }
-        public DbSet<EnfermeiroSituacao> EnfermeiroSituacao { get; set; }
         public DbSet<Estabelecimento> Estabelecimento { get; set; }
-        public DbSet<Situacao> Situacao { get; set; }
         public DbSet<TaxaSindical> TaxaSindical { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -53,15 +51,6 @@ namespace DWM.Models.Entidades
                 .WithRequired(e => e.Enfermeiro)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Enfermeiro>()
-                .HasMany(e => e.EnfermeiroSituacao)
-                .WithRequired(e => e.Enfermeiro)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<EnfermeiroSituacao>()
-                .Property(e => e.Competencia)
-                .HasPrecision(6, 0);
-
             modelBuilder.Entity<Estabelecimento>()
                 .Property(e => e.CNPJ)
                 .IsFixedLength();
@@ -78,15 +67,6 @@ namespace DWM.Models.Entidades
             modelBuilder.Entity<Estabelecimento>()
                 .HasMany(e => e.Enfermeiro)
                 .WithRequired(e => e.Estabelecimento)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Situacao>()
-                .Property(e => e.IndSituacao)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Situacao>()
-                .HasMany(e => e.EnfermeiroSituacao)
-                .WithRequired(e => e.Situacao)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TaxaSindical>()

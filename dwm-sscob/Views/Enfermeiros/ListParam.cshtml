@@ -1,0 +1,55 @@
+﻿@using App_Dominio.Repositories
+@model System.Web.Mvc.PagedList<DWM.Models.Repositories.EnfermeiroViewModel>
+
+@if (Model != null)
+{
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Enfermeiros</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>CPF</th>
+                        <th>Nome</th>
+                        <th>Estabelecimento</th>
+                        <th>PIS</th>
+                        <th class="text-center">Situação</th>
+                        <th class="text-center">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DWM.Models.Repositories.EnfermeiroViewModel enf in Model)
+                    {
+                        <tr>
+                            <td>@enf.CPFComFormatacao</td>
+                            <td>@enf.Nome</td>
+                            <td>@enf.EstabelecimentoViewModel.Nome</td>
+                            <td>@enf.PIS</td>
+                            <td class="text-center">
+                                @if (enf.IndSituacao == "A")
+                                {
+                                    <span>Ativo</span>
+                                }
+                                else
+                                {
+                                    <span>Inativo</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                <a href="Edit?EnfermeiroID=@enf.EnfermeiroID" title="Editar"><i class="fa fa-2x fa-edit text-orange"></i></a>&nbsp;
+                                <a href="Delete?EnfermeiroID=@enf.EnfermeiroID" title="Editar"><i class="fa fa-2x fa-trash text-danger"></i></a>&nbsp;
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+    @Html.Partial("_defaultListButtons", new List<ButtonRepository> { new ButtonRepository() { linkText = "Incluir", actionName = "Create", controllerName = "Enfermeiros", buttonType = "primary" } })
+}

@@ -14,6 +14,7 @@ namespace DWM.Models.Entidades
         public static SessaoLocal GetSessaoLocal(Sessao sessaoCorrente, DbContext _db)
         {
             ApplicationContext db = (ApplicationContext)_db;
+
             SessaoLocal SessaoLocal = new SessaoLocal()
             {
                 dt_atualizacao = sessaoCorrente.dt_atualizacao,
